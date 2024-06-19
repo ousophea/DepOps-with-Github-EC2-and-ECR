@@ -2,14 +2,43 @@
 
 ## Integrating with GitHub Actions – CICD pipeline to Deploy a Web App to Amazon EC2
 
-Many Organizations adopt [DevOps Practices](https://aws.amazon.com/devops/what-is-devops/) to innovate faster by automating and streamlining the software development and infrastructure management processes. Beyond cultural adoption, DevOps also suggests following certain best practices and Continuous Integration and Continuous Delivery (CI/CD) is among the important ones to start with. CI/CD practice reduces the time it takes to release new software updates by automating deployment activities. Many tools are available to implement this practice. Although AWS has a set of native tools to help achieve your CI/CD goals, it also offers flexibility and extensibility for integrating with numerous third party tools.
+1- Prepare node project
+    a. Create new project
+    b. Check local service is work fine?
+    c. Push to Github repository (initial) 
+    d. Prepare Docker in Github
+        - /.github/workflow/docker-images.yml
+            □ Code " 
+    e. Add secret in Github
+        i. Setting -->  secrets and variables --> Action --> New Repository secrets (image 1)
+    f. Test push to Github test pipeline access
+    g. Create Runner
+        i. Setting --> runner --> new runner (image 2)
+    
+2- Create EC2
+    a. Ubutus
+        i. Anable : 80 , 443
+        ii. Update EC2
+            1) sudo apt update
+            2) sudo apt-get upgrade -y
+            3) Add ubuntu user to docker
+                a) sudo usermod -a -G docker  ubuntu --> request logout
+        iii. Install docker
+        iv. Install nginx 
+            1) Config proxy
+        v. Login to docker regestry (dockehub, nexus…)
+        vi. Check docker images
 
-In this post, you will use [GitHub Actions](https://help.github.com/en/actions) to create a CI/CD workflow and [AWS CodeDeploy](https://aws.amazon.com/codedeploy/) to deploy a sample Java SpringBoot application to Amazon Elastic Compute Cloud ([Amazon EC2](https://docs.aws.amazon.com/ec2/index.html?nc2=h_ql_doc_ec2#amazon-ec2)) instances in an Autoscaling group.
+            
+        i. Install Github runer
+            1) Code ???
+            2) Go to Github to check runner is connect
+            
+3- Create CD pipeline
+    a. Go to project directory -- > create  cd.yml
+    b. Access to EC2 with github action 
 
 
-GitHub Actions is a feature on GitHub’s popular development platform that helps you automate your software development workflows in the same place that you store code and collaborate on pull requests and issues. You can write individual tasks called actions, and then combine them to create a custom workflow. Workflows are custom automated processes that you can set up in your repository to build, test, package, release, or deploy any code project on GitHub.
-
-AWS CodeDeploy is a deployment service that automates application deployments to Amazon EC2 instances, on-premises instances, serverless AWS Lambda functions, or Amazon Elastic Container Service (Amazon ECS) services.
 
 
 ## Solution Overview
